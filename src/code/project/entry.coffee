@@ -1,5 +1,9 @@
-module.exports = (App) ->
-  routes: require('./routes')(App)
+App = require 'application'
+
+module.exports =
+  routes: require './routes'
+  handlers:
+    data: require './handlers/data'
 
   beforeStart: ->
     App.renderer.setLayouts(

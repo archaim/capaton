@@ -1,14 +1,14 @@
 doctype 5
 html
   head
-    title SPA Template #{ debug ? 'DEBUG MODE' : ''}
+    title Trends Meter
 
     each script in (scripts || {})
       link(rel="subresource", href='/' + script)
 
     each style in (styles || {})
       link(rel='stylesheet', href='/' + style)
-  body
+  body.cbp-spmenu-push
     #app
 
     each script in (scripts || {})

@@ -24,6 +24,10 @@ module.exports = class View extends Backbone.View
 
     # List of current linked views
     @childViews = @childViews || {}
+
+    # Just render counter
+    @renderCount = 0
+
     super
 
   ###
@@ -53,6 +57,8 @@ module.exports = class View extends Backbone.View
       @renderTemplate(@template, arguments[0])
 
     @renderChilds()
+    @delegateEvents()
+    @renderCount++
     @
 
   ###
@@ -72,11 +78,17 @@ module.exports = class View extends Backbone.View
         else
           @childViews[selector] =
             view: new view(parent: @)
-      @childViews[selector].view.render()
-      @$el.find(selector).html(@childViews[selector].view.el)
-
-    @delegateEvents()
+        @childViews[selector].view.render()
+        @$el.find(selector).html(@childViews[selector].view.el)
     @
+
+  renderContent: ->
+    return if !(contentSelector = @getContentViewSelector())
+
+    if view = @childViews[contentSelector]?.view
+      @delegateEvents(false)
+      view.render()
+      @$el.find(contentSelector).html(view.el)
 
   delegateEvents: (recursively = true) ->
     if recursively
@@ -112,14 +124,16 @@ module.exports = class View extends Backbone.View
 
     #if !view
     @childViews[contentSelector].view = view
-    @delegateEvents(false)
-    @childViews[contentSelector].view.delegateEvents()
+    @renderContent()
+    #@delegateEvents(false)
+    #@childViews[contentSelector].view.render()
+    #@childViews[contentSelector].view.delegateEvents()
     #else
     #  @childViews[contentSelector].view = null
     #  @delegateEvents(false)
 
     @trigger('change:view', contentSelector)
-    @trigger('change:contentview')
+    @trigger('change:contentview', view)
     @
 
 

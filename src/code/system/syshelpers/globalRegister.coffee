@@ -13,6 +13,3 @@ module.exports = (root) ->
   Backbone.$ = root.$
 
   require 'bootstrap'
-
-
-

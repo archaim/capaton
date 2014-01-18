@@ -38,6 +38,7 @@ components =
         assets:
           file: "dist/*.swf"
 
+
   ###
     Libs that don't exists in bower repo, git, or that need monkey patching for work with browserify/other libs
   ###

@@ -1,12 +1,24 @@
 @import 'nib'
 
-@import 'blocks/footer'
+@import '_snipets'
 
-.box
-  grayed()
-  border: 1px solid #000000
-  border-radius: 4px
-  size: 80px 180px
+html
+  width: 100%
+
+.trends
+  .row.trend
+    width: 50%
+    margin-top: 10px
+
+    $colors = #11beed, #F0F, #F50, #20ef1f, #ff94e4, #71F
+
+    for c, num in $colors
+      .color{num}
+        border-color: c
+
+  .row.buttons
+    margin-top: 15px
+
 
 
 

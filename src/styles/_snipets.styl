@@ -1,0 +1,77 @@
+.btn-label 
+  position: relative
+  left: -12px
+  display: inline-block
+  padding: 6px 12px
+  background: rgba(0, 0, 0, 0.15)
+  border-radius: 3px 0 0 3px
+
+.btn-labeled 
+  padding-top: 0
+  padding-bottom: 0
+
+.btn 
+  margin-bottom: 10px
+
+
+$shiftSize = 240px
+$transition = left 1s
+
+.cbp-spmenu
+  background: #47a3da
+  position: fixed
+
+  h3
+    color: #afdefa
+    font-size: 1.9em
+    padding: 20px
+    margin: 0
+    font-weight: 300
+    background: #0d77b6
+
+  a
+    display: block
+    color: #fff
+    font-size: 1.1em
+    font-weight: 300
+
+    &:hover
+      background: #258ecd
+
+    &:active
+      background: #afdefa
+      color: #47a3da
+
+
+.cbp-spmenu-vertical 
+  width: $shiftSize
+  height: 100%
+  top: 0
+  z-index: 1000
+
+
+.cbp-spmenu-vertical a 
+  border-bottom: 1px solid #258ecd
+  padding: 1em
+
+.cbp-spmenu-left
+  left: -($shiftSize)
+  transition: $transition 
+
+  &.cbp-spmenu-open
+    left: 0px
+
+.cbp-spmenu-push 
+  overflow-x: hidden
+  position: relative
+  left: 0
+  transition: $transition
+
+
+.cbp-spmenu-push-toright 
+  left: $shiftSize
+
+
+.cbp-spmenu-push-toleft 
+  left: -($shiftSize)
+

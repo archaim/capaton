@@ -1,0 +1,29 @@
+nav#options-menu.cbp-spmenu.cbp-spmenu-vertical.cbp-spmenu-left
+  h3 Options
+  a(href='#') Celery seakale
+  a(href='#') Dulse daikon
+  a(href='#') Zucchini garlic
+
+
+.panel.panel-default.trends
+  .panel-body
+    button.optionsMenu.btn.btn-labeled.btn-primary(type="button")
+      span.btn-label: i.glyphicon.glyphicon-tasks
+      span.title Show options
+
+    - var i = 0
+    for trend in trends.models
+      .row.trend
+        .col-lg-12
+          input.form-control(type="text", data-id=trend.cid, placeholder="Trend title...", class="color#{ i++ }")
+
+    .row.buttons
+      .col-lg-12
+        if maxTrends > trends.length
+          button#addColumn.btn.btn-labeled.btn-success(type="button")
+            span.btn-label: i.glyphicon.glyphicon-plus
+            span.title Add trend
+
+.row
+  .col-lg-12
+    button#request.btn.btn-primary(type="button") Request data

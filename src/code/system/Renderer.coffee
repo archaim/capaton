@@ -1,6 +1,9 @@
 module.exports = class Renderer
+  @DEFAULT_LAYOUT_ID: 'default'
+
   constructor: (@$container) ->
     @currentLayout = null
+    @currentLayoutId = ""
     @cachedLayouts = {}
     @layouts = {}
 
@@ -16,7 +19,7 @@ module.exports = class Renderer
       @clearCache(key) for key of layouts
 
     if @layouts.default
-      @activateLayout('default')
+      @activateLayout(Renderer.DEFAULT_LAYOUT_ID)
     else
       c.warn 'Default layout not specified'
 
@@ -34,11 +37,16 @@ module.exports = class Renderer
       throw Error "Layout \"#{ layout }\" not defined"
 
     @currentLayout = @cachedLayouts[layout] || @cachedLayouts[layout] = new @layouts[layout]
+    @currentLayoutId = layout
+    @currentLayout.render()
 
   render: (view, layout) ->
-    @activateLayout(layout || 'default')
+    layout = layout || Renderer.DEFAULT_LAYOUT_ID
+    if @currentLayoutId != layout
+      @activateLayout(layout)
 
     @currentLayout.setContentView(view)
-    @$container.html(@currentLayout.render().el)
+    @$container.html(@currentLayout.el)
+    @currentLayout.delegateEvents()
 
 

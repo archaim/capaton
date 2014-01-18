@@ -81,8 +81,8 @@ module.exports = (grunt) ->
           alias: utils.browserifyPaths(libs.js, {cwd: './<%= isDev ? paths.dist : paths.tmp  %>/<%= paths.js %>/<%= paths.vendors %>', flatten: true})
                  .concat(utils.libsAdditionalAliases(libs.js))
                  .concat(['<%= paths.tmp %>/<%= paths.js %>/<%= paths.generated %>/<%= paths.templatesjs %>:templates'])
-                 .concat(['<%= paths.tmp %>/<%= paths.js %>/<%= paths.code %>/system/bundles/system.js:system'])
-          transform: ['coffeeify']
+                 .concat(['<%= paths.tmp %>/<%= paths.js %>/<%= paths.code %>/system/bundles/system.js:system'
+                          '<%= paths.tmp %>/<%= paths.js %>/<%= paths.code %>/system/Application.js:application'])
         src: [
           '<%= paths.tmp  %>/<%= paths.js %>/<%= paths.code %>/**/*.js'
           '<%= paths.tmp  %>/<%= paths.js %>/<%= paths.generated %>/**/*.js'
@@ -195,5 +195,7 @@ module.exports = (grunt) ->
   grunt.registerTask '_compile', ['_templates', '_makecoffee', '_makestyles', '_layouts']
 
   grunt.registerTask 'rebuild', ['_clean', 'copy:libsAssets', '_compile']
+
+  grunt.registerTask 'w', ['rebuild', 'watch:full']
 
   grunt.registerTask 'default', ['rebuild']

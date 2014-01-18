@@ -32,6 +32,7 @@
     "grunt-coffeelint": "~0.0.7",
     "grunt-contrib-jade": "~0.8.0",
     "grunt-browserify": "~1.2.11",
-    "grunt-text-replace": "~0.3.9"
+    "grunt-text-replace": "~0.3.9",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }

@@ -1,14 +1,6 @@
-module.export = (relativeTo = "") ->
-  pathsToRoot =
-    'system': '../'
-    'project': '../'
+module.exports =
+  network:
+    host: '127.0.0.1:8880'
 
-  root = pathsToRoot[relativeTo] || ''
-
-  {
-    rootDirectory: root
-    projectDirectory: root + 'project'
-    systemDirectory: root + 'system'
-
-    projectEntry: root + 'project/index.js'
-  }
+  project:
+    maxTrends: 6
