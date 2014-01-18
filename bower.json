@@ -1,0 +1,12 @@
+{
+    "name": "web-client",
+    "dependencies": {
+        "jade": "",
+        "jquery": "",
+        "bootstrap": "",
+        "lodash": "",
+        "backbone": "",
+        "rivets": "",
+        "socket.io-client": ""
+    }
+}

@@ -1,0 +1,29 @@
+.row
+  header.col-lg-12
+    h1 Socket.io client
+
+  .col-lg-12.form-horizontal
+    .form-group
+      label.col-sm-2.control-label(for="serverAddr") Server
+    .col-sm-10
+      .input-group
+        input#serverAddr.form-control(type="text", value="localhost:8880")
+        span.input-group-btn
+          button#connectButton.btn.btn-primary(type="button") Connect
+
+.row
+  .col-lg-12
+    .row
+      .col-lg-6
+        .row
+          .col-lg-12
+            input#eventName.form-control(type="text", value="echo")
+        .row
+          .col-lg-12
+            textarea#requestData.form-control(rows="6") "echo"
+      .col-lg-6
+        textarea#response.form-control(rows="7")
+
+.row
+  .col-lg-12
+    button#sendButton.btn.btn-primary(type="button") Send

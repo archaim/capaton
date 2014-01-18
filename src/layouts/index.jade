@@ -1,0 +1,15 @@
+doctype 5
+html
+  head
+    title SPA Template #{ debug ? 'DEBUG MODE' : ''}
+
+    each script in (scripts || {})
+      link(rel="subresource", href='/' + script)
+
+    each style in (styles || {})
+      link(rel='stylesheet', href='/' + style)
+  body
+    #app
+
+    each script in (scripts || {})
+      script(src='/' + script)
